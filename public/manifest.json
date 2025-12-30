@@ -1,0 +1,16 @@
+{
+  "name": "Helados Donofrio POS",
+  "short_name": "Helados POS",
+  "description": "Registro de pedidos, cierres y cobros para vendedores.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf6e7",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

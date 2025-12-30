@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum UserRole {
+  OPERADOR
+  ADMIN
+}
+
+enum TicketStatus {
+  OPEN
+  CLOSED
+}
+
+enum BatteryMode {
+  PER_DAY
+  PER_UNIT
+}
+
+enum PaymentStatus {
+  PAID
+  CREDIT
+  PARTIAL
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  role      UserRole
+  pinHash   String
+  createdAt DateTime @default(now())
+
+  createdTickets Ticket[] @relation("CreatedBy")
+  closedTickets  Ticket[] @relation("ClosedBy")
+  audits         AuditLog[]
+}
+
+model Vendor {
+  id         String   @id @default(cuid())
+  code       String   @unique
+  name       String
+  active     Boolean  @default(true)
+  isFavorite Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  tickets Ticket[]
+}
+
+model Product {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  displayOrder Int   @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  prices PriceHistory[]
+  lines  TicketLine[]
+}
+
+model PriceHistory {
+  id        String   @id @default(cuid())
+  productId String
+  price     Decimal
+  validFrom String
+  createdAt DateTime @default(now())
+
+  product Product @relation(fields: [productId], references: [id])
+
+  @@unique([productId, validFrom])
+}
+
+model Ticket {
+  id               String        @id @default(cuid())
+  vendorId         String
+  date             String
+  status           TicketStatus
+  batteryMode      BatteryMode   @default(PER_DAY)
+  batteryUnitPrice Decimal
+  batteryQty       Int           @default(1)
+  total            Decimal       @default(0)
+  paidAmount       Decimal       @default(0)
+  balance          Decimal       @default(0)
+  paymentStatus    PaymentStatus @default(CREDIT)
+  createdByUserId  String
+  closedByUserId   String?
+  createdAt        DateTime      @default(now())
+  closedAt         DateTime?
+  printedAt        DateTime?
+
+  vendor   Vendor @relation(fields: [vendorId], references: [id])
+  lines    TicketLine[]
+  createdBy User @relation("CreatedBy", fields: [createdByUserId], references: [id])
+  closedBy  User? @relation("ClosedBy", fields: [closedByUserId], references: [id])
+
+  @@unique([vendorId, date])
+}
+
+model TicketLine {
+  id            String   @id @default(cuid())
+  ticketId      String
+  productId     String
+  leftoversPrev Int      @default(0)
+  orderQty      Int      @default(0)
+  leftoversNow  Int      @default(0)
+  soldQty       Int      @default(0)
+  unitPriceUsed Decimal
+  subtotal      Decimal  @default(0)
+
+  ticket  Ticket  @relation(fields: [ticketId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
+  @@unique([ticketId, productId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  entityType String
+  entityId   String
+  action     String
+  detailsJson String
+  userId     String
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Settings {
+  id               String     @id @default("global")
+  batteryMode      BatteryMode
+  batteryUnitPrice Decimal
+  batteryQty       Int
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+}
+
+model PinAttempt {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  attempts  Int      @default(0)
+  lockUntil DateTime?
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,18 @@
+8945df2 | 2025-12-30 12:18:04 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Print: más separación entre Ayer y Hoy
+6c6a20b | 2025-12-30 12:11:53 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Print: boleta con PDD + sobras + importe
+59b046d | 2025-12-30 11:56:31 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Fix: hidratación estable en hora de impresión
+937ee3e | 2025-12-30 11:45:04 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Fix: cierre idempotente y estado CLOSED
+a929289 | 2025-12-30 11:20:45 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | UX: sin scroll horizontal + navegación con teclas
+b2c46a1 | 2025-12-30 10:40:19 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | UX: pedido/cierre sin scroll y vendedor destacado
+60c077e | 2025-12-29 23:19:31 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | UI: centrar tablas y reducir ancho
+40a027e | 2025-12-29 23:09:18 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Fix: no borrar cookies en Server Components
+8fe2929 | 2025-12-29 20:40:26 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Orden fijo de productos + imprimir con hora
+b787bdf | 2025-12-29 18:48:20 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Vendor photos: fallback jpg/png
+813376f | 2025-12-29 18:45:17 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | POS layout: no-scroll tables + vendor badge + print time
+40c0472 | 2025-12-29 18:07:33 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Auto-create PinAttempt table if missing
+43af5d7 | 2025-12-27 13:38:56 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Sync active products + guard closed tickets
+6ae7c5e | 2025-12-27 13:33:42 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Excel-style entry + print + seed prices
+24b18f2 | 2025-12-27 12:44:47 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Fix build: next-pwa types + login
+fa52916 | 2025-12-27 12:38:19 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Fix Next 16 async cookies/headers
+2a9800d | 2025-12-26 22:32:53 -0500 | Author:jeffangeloss <tu@email.com> | Committer:jeffangeloss <tu@email.com> | Inicial POS Donofrio
+c62b03d | 2025-12-26 20:44:12 -0500 | Author:jeffangeloss <20235218@aloe.ulima.edu.pe> | Committer:GitHub <noreply@github.com> | Initial commit
